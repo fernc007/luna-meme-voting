@@ -42,7 +42,8 @@ function App() {
 
   // 3. Handle vote
   const handleVote = async (memeId) => {
-	  // console.log("voting on meme with id:", memeId);
+   // console.log("voting on meme with id:", memeId);
+   console.log('Trying to vote on meme:', memeId, 'as user:', userId);
     if (userVotes.includes(memeId)) return; // already voted
 
     // Insert vote

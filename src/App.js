@@ -26,7 +26,9 @@ function App() {
         .select('*')
         .order('upVote', { ascending: false });
 
-      const { data: votesData } = await supabase
+      console.log('Memes loaded:', memesData);
+
+	const { data: votesData } = await supabase
         .from('votes')
         .select('meme_id')
         .eq('user_id', userId);

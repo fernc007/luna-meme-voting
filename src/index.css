@@ -1,3 +1,29 @@
+.nav-header {
+  background-color: #3b82f6;
+  padding: 10px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-bar a:hover {
+  color: #dbeafe;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;

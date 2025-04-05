@@ -42,14 +42,28 @@ function App() {
 
   // 3. Handle vote
   const handleVote = async (memeId) => {
-	  console.log("voting on meme with id:", memeId);
+	  // console.log("voting on meme with id:", memeId);
     if (userVotes.includes(memeId)) return; // already voted
 
     // Insert vote
-    await supabase.from('votes').insert([{ meme_id: memeId, user_id: userId }]);
+    const { error: insertError } = await supabase
+    .from('votes')
+    .insert([{ meme_id: memeId, user_id: userId }]);
+
+    if (insertError) {
+    if (insertError.code === '23505') {
+      console.warn('User already voted for this meme.');
+    } else {
+      console.error('Error inserting vote:', insertError.message);
+    }
+    return;
+  }
 
     // Increment upVote count
-    await supabase.rpc('increment_upvote', { meme_id_input: memeId });
+    if (rpcError) {
+    console.error('Error incrementing upVote:', rpcError.message);
+    return;
+  }
 
     // Optimistic UI update
     setMemes((prev) =>

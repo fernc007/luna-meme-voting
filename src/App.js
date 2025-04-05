@@ -81,37 +81,25 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Vote for Your Favorite Meme!</h1>
-      <div style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))' }}>
-        {memes.map((meme) => (
-          <div
-            key={meme.id}
-            style={{
-              border: '1px solid #ccc',
-              padding: '10px',
-              borderRadius: '10px',
-              background: '#fff',
-              textAlign: 'center',
-            }}
-          >
-            <img
-              src={meme.image_url}
-              alt={meme.text}
-              style={{ maxWidth: '100%', borderRadius: '6px' }}
-            />
-            <p style={{ fontWeight: 'bold' }}>{meme.text}</p>
-            <p>Votes: {meme.upVote}</p>
-            <button
-              onClick={() => handleVote(meme.id)}
-              disabled={userVotes.includes(meme.id)}
-            >
-              {userVotes.includes(meme.id) ? 'Voted' : 'Vote'}
-            </button>
-          </div>
-        ))}
+<div className="voting-app">
+  <h1 className="title">🏆 Vote for Your Favorite Meme!</h1>
+  <div className="meme-grid">
+    {memes.map((meme) => (
+      <div className="meme-card" key={meme.id}>
+        <img src={meme.image_url} alt={meme.text} />
+        <p className="meme-text">{meme.text}</p>
+        <p className="vote-count">🔥 Votes: {meme.upVote}</p>
+        <button
+          onClick={() => handleVote(meme.id)}
+          disabled={userVotes.includes(meme.id)}
+          className="vote-button"
+        >
+          {userVotes.includes(meme.id) ? '✅ Voted' : 'Vote'}
+        </button>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
   );
 }
 

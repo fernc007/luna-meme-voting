@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     let storedUserId = localStorage.getItem('meme_user_id');
     if (!storedUserId) {
-      storedUserId = `user_${crypto.randomUUID()}`;
+      storedUserId = crypto.randomUUID();
       localStorage.setItem('meme_user_id', storedUserId);
     }
     setUserId(storedUserId);

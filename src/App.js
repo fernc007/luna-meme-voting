@@ -60,6 +60,10 @@ function App() {
   }
 
     // Increment upVote count
+  
+     const { error: rpcError } = await supabase
+    .rpc('increment_upvote', { meme_id_input: memeId });
+
     if (rpcError) {
     console.error('Error incrementing upVote:', rpcError.message);
     return;

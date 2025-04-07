@@ -2,8 +2,8 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Replace with your own project URL and anon API key
-const supabaseUrl =   // e.g., 'https://xyzcompany.supabase.co'
-const supabaseKey = // e.g., 'your-anon-api-key'
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
+const supabaseKey =  process.env.REACT_APP_SUPABASE_ANON_KEY;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
